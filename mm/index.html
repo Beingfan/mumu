@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>更多</title>
+    <title>空间设计</title>
     <style>
         body, html {
             margin: 0;
@@ -25,38 +25,7 @@
     <img src="images/img_04.jpg">
     <img src="images/img_05.jpg">
 
-    <script>
-        
-        const encryptedUrls = [
-            'aHR0cHM6Ly93d3cuZHJvcGJveC5jb20vc2NsL2ZpLzVybmQ3Y2pxdHMwZ284aWhxbzhhMC9NVU1VLnppcD9ybGtleT00NGtqZmJ0ZG4xZDh1aXp2cnZyM3E0aGc2JnN0PXYwbzFuZTdvJmRsPTE=',
-            'aHR0cHM6Ly93d3cuZHJvcGJveC5jb20vc2NsL2ZpLzVybmQ3Y2pxdHMwZ284aWhxbzhhMC9NVU1VLnppcD9ybGtleT00NGtqZmJ0ZG4xZDh1aXp2cnZyM3E0aGc2JnN0PXYwbzFuZTdvJmRsPTE=',
-            'aHR0cHM6Ly93d3cuZHJvcGJveC5jb20vc2NsL2ZpLzVybmQ3Y2pxdHMwZ284aWhxbzhhMC9NVU1VLnppcD9ybGtleT00NGtqZmJ0ZG4xZDh1aXp2cnZyM3E0aGc2JnN0PXYwbzFuZTdvJmRsPTE=',
-            'aHR0cHM6Ly93d3cuZHJvcGJveC5jb20vc2NsL2ZpLzVybmQ3Y2pxdHMwZ284aWhxbzhhMC9NVU1VLnppcD9ybGtleT00NGtqZmJ0ZG4xZDh1aXp2cnZyM3E0aGc2JnN0PXYwbzFuZTdvJmRsPTE=',
-            'aHR0cHM6Ly93d3cuZHJvcGJveC5jb20vc2NsL2ZpLzVybmQ3Y2pxdHMwZ284aWhxbzhhMC9NVU1VLnppcD9ybGtleT00NGtqZmJ0ZG4xZDh1aXp2cnZyM3E0aGc2JnN0PXYwbzFuZTdvJmRsPTE=',
-            'aHR0cHM6Ly93d3cuZHJvcGJveC5jb20vc2NsL2ZpLzVybmQ3Y2pxdHMwZ284aWhxbzhhMC9NVU1VLnppcD9ybGtleT00NGtqZmJ0ZG4xZDh1aXp2cnZyM3E0aGc2JnN0PXYwbzFuZTdvJmRsPTE=',
-            'aHR0cHM6Ly93d3cuZHJvcGJveC5jb20vc2NsL2ZpLzVybmQ3Y2pxdHMwZ284aWhxbzhhMC9NVU1VLnppcD9ybGtleT00NGtqZmJ0ZG4xZDh1aXp2cnZyM3E0aGc2JnN0PXYwbzFuZTdvJmRsPTE='
-        ];
-        function base64Decode(base64) {
-            return atob(base64); 
-        }
-        function downloadFile(encodedUrl) {
-            const url = base64Decode(encodedUrl); 
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = ''; 
-            document.body.appendChild(link); 
-            link.click(); 
-            document.body.removeChild(link); 
-        }
-        
-        const images = document.querySelectorAll('img');
-        images.forEach((img, index) => {
-            img.addEventListener('click', () => {
-                const encodedUrl = encryptedUrls[index]; 
-                downloadFile(encodedUrl); 
-            });
-        });
-    </script>  
+ 
     
 </body>
 </html>
